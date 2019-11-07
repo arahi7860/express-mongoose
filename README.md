@@ -1,94 +1,87 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# Talk Template
+# Express Mongoose
 
-Use this template to structure your READMEs for talks. Remove text from this
-section, or use it to frame the talk you are giving. Good framing answers the
-question "Why am I learning this?".
+We've covered working with MongoDB and Mongoose. We've covered the basics of
+building an API with Express.
 
-Be sure to include a recent [`LICENSE`](LICENSE) and Markdown linter
-configuration ([`.remarkrc`](.remarkrc)). Also, include an appropriate
-`.gitignore`; these are usually found in specific technology templates, for
-example [js-template](https://www.github.com/ga-wdi-boston/js-template).
+Now it's time to combine them, to use Mongoose and Express to build
+database-backed APIs.
 
 ## Prerequisites
 
-- Topics with which developers should be familiar with.
-- Prerequisites are "just-in-time", so if I have a prerequisite that mentions
-  Sass, I would **not** need to include CSS as a prerequisite.
-- [Links to previous materials](https://www.github.com/ga-wdi-boston/example)
-  are often useful.
+- Node
+- MongoDB and Mongoose
+- Express
 
 ## Objectives
 
 By the end of this, developers should be able to:
 
-- Write objectives that focus on demonstrating knowledge.
-- Write learning objectives that begin with an
-  [imperative verb](https://en.wikipedia.org/wiki/Imperative_mood).
-- Avoid objectives that start with "Use" or "Understand".
-- Rewrite objecives that begin with "Use" by inverting sentence structure.
-- End each objective with a period.
-- Write objectives on the whiteboard so they can be referenced during a talk.
+- Build an API using Express and Mongoose
 
-## Preparation
+## Introduction
 
-1. Fork and clone this repository.
-   [FAQ](https://github.com/ga-wdi-boston/meta/wiki/ForkAndClone)
-1. Create a new branch, `training`, for your work.
-1. Checkout to the `training` branch.
-1. Install dependencies with `npm install`.
+We've got the pieces we need to build an API, we just need to assemble them
+together.
 
-Better preparation instructions may be found as
-[snippets](https://github.com/ga-wdi-boston/instructors/tree/master/snippets).
+Those pieces are:
 
-It's a good idea to have students do these steps while you're writing objectives
-on the whiteboard.
+1. MongoDB and Mongoose - we'll define models using Mongoose and query those
+   models from within our Express application.
+1. Express - we'll use Express to define routes that perform database queries
+   and return JSON data to our users.
 
-## Leading Topic Heading
+## Initial Setup
 
-Here is where the talk begins. If you have not already included framing above,
-it's appropriate to put it here. Link to introductory articles or documentation.
-Motivate the next section.
+A common theme throughout this is that things are going to be the same - we're
+just doing Mongoose and Express together. That makes sense, right?
 
-Demos, exercises, and labs are labelled as such, followed by a colon and a
-description of the activity starting with an
-[imperative verb](https://en.wikipedia.org/wiki/Imperative_mood).
+Our initial setup is going to be largely the same:
 
-## Demo: Write a Demo
+1. Create a `package.json` file
+1. Install `express` and `mongoose`
+1. Create a `db/` directory, `connection.js`, `index.js`, and `models/`
+   directory
 
-Demos are demonstrations, and developers should give their full attention to
-them. It's a great time for them to take notes about important concepts before
-applying them in an exercise.
+## Database Setup and Mongoose
 
-Demos correspond to the "I do" portion of scaffolding from consultant training.
+Our database setup is going to be largely the same too:
 
-## Code-Along: Write an Code-Along
+1. Set up the database connection in `connection.js`
+1. Define a model inside the `models/` directory
+1. Seed the database with the initial data
 
-During the code-along, developers should apply concepts covered in the previous
-demo, led by the consultant. This is their first chance to generalize concepts
-introduced. Exercises should be very focused, and flow natural into a lab.
+## Express Setup and Routes
 
-Exercises correspond to the "We do" portion of scaffolding from consultant
-training.
+We're going to start by building out a basic Express API (like we've done
+previously).
 
-## Lab: Write a Lab
+1. Import `express` in `index.js`
+1. Define a route for a `GET` request to `'/'`
+1. Have your server listen on port 3000
 
-During labs, developers get to demonstrate their understanding of concepts from
-demos and applied knowledge from exercises. Labs are an opportunity for
-developers to build confidence, and also serve as a diagnostic tool for
-consultants to evaluate developer understanding.
+## Combine Express and Mongoose
 
-Labs should be timed explicitly using a timer. When estimating the time it will
-take to complete a lab, it is better to overestimate. During labs, consultants
-should circle the room and interact with developers, noting patterns and
-prompting with hints on how to complete the lab. If developers end early, a
-consultant may stop the lab timer. If developers do not finish in time, a
-consultant may give more time at her discretion based on current talk pace, the
-current estimate for the talk, and the importance of completing the lab while
-consultant support is available.
+This is where things start to get interesting!
 
-Labs correspond to the "You do" portion of scaffolding from consultant training.
+First, we need to import our model into our `index.js`, which we do by adding
+this line below where we create our Express app:
+
+```js
+const Bookmark = require('./models/Bookmark')
+```
+
+Now that we have our bookmark model, we can use it to query our database. We'll
+then use `res.json` to send the query response back to our users as JSON data.
+
+All together, that looks like this:
+
+```js
+app.get('/', function(req, res) {
+  Bookmark.find({}).then(bookmarks => res.json(bookmarks))
+})
+```
 
 ## Additional Resources
 
