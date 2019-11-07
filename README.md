@@ -32,6 +32,13 @@ Those pieces are:
 1. Express - we'll use Express to define routes that perform database queries
    and return JSON data to our users.
 
+## I Do: [Bookmarks API](https://git.generalassemb.ly/dc-wdi-node-express/express-mongoose-bookmarks-api)
+
+Follow along with [this
+repository](https://git.generalassemb.ly/dc-wdi-node-express/express-mongoose-bookmarks-api)
+as I build out a very simple APi to demonstrate working with Express and
+Mongoose.
+
 ## Initial Setup
 
 A common theme throughout this is that things are going to be the same - we're
