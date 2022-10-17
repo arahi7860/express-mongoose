@@ -71,13 +71,17 @@ previously).
 
 This is where things start to get interesting!
 
-First, we need to import our model into our `index.js`, which we do by adding
+First, we need to import our connection to our database by adding the following line:
+```js
+const connection = require('./connection.js')
+```
+
+Next, we need to import our model into our `index.js`, which we do by adding
 this line below where we create our Express app:
 
 ```js
 const Bookmark = require('./models/Bookmark')
 ```
-
 Now that we have our bookmark model, we can use it to query our database. We'll
 then use `res.json` to send the query response back to our users as JSON data.
 
