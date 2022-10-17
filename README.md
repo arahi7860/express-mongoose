@@ -32,11 +32,10 @@ Those pieces are:
 1. Express - we'll use Express to define routes that perform database queries
    and return JSON data to our users.
 
-## I Do: [Bookmarks API](https://git.generalassemb.ly/sei-axolotls/express-mongoose-bookmarks-api)
+## I Do: [Bookmarks API](https://git.generalassemb.ly/sei-buffleheads/express-mongoose-bookmarks-api)
 
-Follow along with [this
-repository](https://git.generalassemb.ly/sei-axolotls/express-mongoose-bookmarks-api)
-as I build out a very simple APi to demonstrate working with Express and
+Follow along with [this repository](https://git.generalassemb.ly/sei-buffleheads/express-mongoose-bookmarks-api)
+as I build out a very simple API to demonstrate working with Express and
 Mongoose.
 
 ## Initial Setup
