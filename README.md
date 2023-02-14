@@ -32,9 +32,9 @@ Those pieces are:
 1. Express - we'll use Express to define routes that perform database queries
    and return JSON data to our users.
 
-## I Do: [Bookmarks API](https://git.generalassemb.ly/sei-buffleheads/express-mongoose-bookmarks-api)
+## I Do: [Bookmarks API](https://git.generalassemb.ly/sei-noble/express-mongoose-bookmarks-api)
 
-Follow along with [this repository](https://git.generalassemb.ly/sei-buffleheads/express-mongoose-bookmarks-api)
+Follow along with [this repository](https://git.generalassemb.ly/sei-noble/express-mongoose-bookmarks-api)
 as I build out a very simple API to demonstrate working with Express and
 Mongoose.
 
@@ -73,14 +73,14 @@ This is where things start to get interesting!
 
 First, we need to import our connection to our database by adding the following line:
 ```js
-const connection = require('./connection.js')
+import mongoose from './connection.js'
 ```
 
 Next, we need to import our model into our `index.js`, which we do by adding
 this line below where we create our Express app:
 
 ```js
-const Bookmark = require('./models/Bookmark')
+import Bookmark from './models/Bookmark'
 ```
 Now that we have our bookmark model, we can use it to query our database. We'll
 then use `res.json` to send the query response back to our users as JSON data.
